@@ -1,4 +1,4 @@
-// REPT BATTERO - Home page interactions
+// UTEX ENERGY - Home page interactions
 
 // Mobile nav toggle
 document.querySelector('.nav-toggle')?.addEventListener('click', function () {
