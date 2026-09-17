@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="260" height="60" viewBox="0 0 260 60" fill="none" role="img" aria-label="UTEX ENERGY">
+  <defs>
+    <linearGradient id="utexMark" x1="0" y1="0" x2="52" y2="52" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#38bdf8"/>
+      <stop offset="0.55" stop-color="#1d4ed8"/>
+      <stop offset="1" stop-color="#22c55e"/>
+    </linearGradient>
+    <linearGradient id="utexBolt" x1="18" y1="10" x2="38" y2="50" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#e6f4ff"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Icon mark: rounded battery cell with an energy bolt -->
+  <g>
+    <rect x="4" y="8" width="44" height="44" rx="13" fill="url(#utexMark)"/>
+    <rect x="4" y="8" width="44" height="44" rx="13" fill="#ffffff" opacity="0.06"/>
+    <!-- battery terminal -->
+    <rect x="21" y="3.5" width="10" height="6" rx="2.4" fill="url(#utexMark)"/>
+    <!-- energy bolt -->
+    <path d="M29.5 15 L18 33 h7.2 l-2.7 12 L34 26.5 h-7l2.5-11.5 Z" fill="url(#utexBolt)"/>
+  </g>
+
+  <!-- Wordmark -->
+  <g fill="#0a1a4f">
+    <text x="60" y="33" font-family="'Segoe UI', Arial, sans-serif" font-size="26" font-weight="800" letter-spacing="1.5">UTEX</text>
+    <text x="60" y="50" font-family="'Segoe UI', Arial, sans-serif" font-size="12.5" font-weight="600" letter-spacing="6.5" fill="#1d4ed8">ENERGY</text>
+  </g>
+</svg>
