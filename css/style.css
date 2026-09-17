@@ -185,6 +185,27 @@ h1, h2, h3, h4 {
 }
 .site-header.scrolled .logo img { height: 36px; }
 
+/* ---------- Text logo (header + footer) ---------- */
+.logo-text {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    text-decoration: none;
+    font-family: Georgia, 'Times New Roman', 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 1.15rem;
+    line-height: 1.05;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--white);
+    transition: font-size 0.3s ease;
+}
+/* Header shrink on scroll */
+.site-header.scrolled .logo-text { font-size: 1rem; }
+
+/* Footer variant sits on a light background */
+.footer .brand-logo.logo-text { color: var(--navy-800); font-size: 1.35rem; }
+
 .nav-links { display: flex; gap: 6px; list-style: none; }
 .nav-links a {
     color: rgba(255, 255, 255, 0.85);
@@ -397,10 +418,10 @@ h1, h2, h3, h4 {
     z-index: 3;
 }
 
-/* Staggered entrance for hero elements */
+/* Staggered entrance for hero elements: slide in from right to left */
 .hero-content > [data-reveal] {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateX(60px);
     animation: heroIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 .hero-content > [data-reveal]:nth-child(1) { animation-delay: 0.15s; }
@@ -1239,7 +1260,6 @@ h1, h2, h3, h4 {
     color: var(--text-body);
 }
 .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.3fr; gap: 44px; }
-.footer .brand-logo img { height: 46px; }
 .footer .brand-rule {
     width: 90px; height: 4px;
     margin: 16px 0;
@@ -1785,8 +1805,8 @@ h1, h2, h3, h4 {
 /* ---------- Footer: social bob + subscribe glow ---------- */
 .social a { transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease; }
 .social a:hover { box-shadow: 0 8px 18px -4px rgba(29,78,216,0.6); }
-.footer .brand-logo img { transition: transform 0.3s ease; }
-.footer .brand-logo:hover img { transform: scale(1.04); }
+.footer .brand-logo.logo-text { transition: transform 0.3s ease; transform-origin: left center; }
+.footer .brand-logo.logo-text:hover { transform: scale(1.03); }
 
 /* ---------- Nav links: animated underline ---------- */
 .nav-links a { position: relative; }

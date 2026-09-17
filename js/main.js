@@ -14,7 +14,13 @@ window.addEventListener('scroll', onScroll, { passive: true });
 onScroll();
 
 // Scroll reveal animations
-var reveals = document.querySelectorAll('[data-reveal]');
+// Exclude hero-content items: they have their own CSS `heroIn` entrance
+// animation, so letting the JS observer also toggle them causes the hero
+// to animate twice on page load.
+var reveals = Array.prototype.filter.call(
+    document.querySelectorAll('[data-reveal]'),
+    function (el) { return !el.closest('.hero-content'); }
+);
 if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (entries) {
         entries.forEach(function (e) {
@@ -209,43 +215,9 @@ document.querySelectorAll('.partner-tabs button').forEach(function (btn) {
         });
     });
 
-    /* ---- Hero headline typing effect ---- */
-    var h1 = document.querySelector('.hero h1');
-    if (h1) {
-        // Preserve the gradient span; type the leading + trailing plain text.
-        var grad = h1.querySelector('.grad-text');
-        if (grad) {
-            var full = h1.textContent;
-            var gradText = grad.textContent;
-            var idx = full.indexOf(gradText);
-            var pre = full.slice(0, idx);
-            var post = full.slice(idx + gradText.length);
-
-            h1.innerHTML = '<span class="t-pre"></span><span class="grad-text">' + gradText + '</span><span class="t-post"></span>';
-            var preEl = h1.querySelector('.t-pre');
-            var gradEl = h1.querySelector('.grad-text');
-            var postEl = h1.querySelector('.t-post');
-            gradEl.style.opacity = '0';
-            h1.classList.add('type-caret');
-
-            var i = 0, j = 0, k = 0;
-            var speed = 42;
-            var typePre = function () {
-                if (i <= pre.length) { preEl.textContent = pre.slice(0, i++); setTimeout(typePre, speed); }
-                else { gradEl.style.opacity = '1'; setTimeout(typeGrad, speed * 2); }
-            };
-            var typeGrad = function () {
-                if (j <= gradText.length) { gradEl.textContent = gradText.slice(0, j++); setTimeout(typeGrad, speed); }
-                else setTimeout(typePost, speed);
-            };
-            var typePost = function () {
-                if (k <= post.length) { postEl.textContent = post.slice(0, k++); setTimeout(typePost, speed); }
-                else h1.classList.remove('type-caret');
-            };
-            // start after the hero entrance animation
-            setTimeout(typePre, 500);
-        }
-    }
+    /* Hero headline typing effect removed:
+       it re-animated the <h1> after the CSS `heroIn` entrance, which made the
+       hero appear to animate twice on load. The single CSS entrance is kept. */
 })();
 
 /* ==========================================================================
